@@ -1,0 +1,133 @@
+openapi: 3.0.1
+info:
+  title: STD21052
+  description: Express API REST
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:9000
+
+tags:
+  - name: Users
+
+paths:
+  /users:
+    get:
+      tags:
+        - Users
+      operationId: getUsers
+      summary: Get all Users
+      description: get all users with details
+      responses:
+        200:
+          description: Get all users with details
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: "#/components/schemas/user_data_form"
+    post:
+      tags:
+        - Users
+      operationId: addUsers
+      summary: Add new users
+      description: add new users with specified values
+      requestBody:
+        description: create new user
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/user_data_add_form"
+      responses:
+        200: 
+          description: Create user
+          content:
+            application/json:
+              schema:
+                  $ref: "#/components/schemas/user_data_form"
+
+  /users/{id}:
+    get:
+      tags:
+        - Users
+      operationId: getUsersById
+      summary: Get user's information by id
+      description: Get user's information by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200: 
+          description: Get one user
+          content:
+            application/json:
+              schema:
+                  $ref: "#/components/schemas/user_data_form"
+    put:
+      tags:
+        - Users
+      operationId: updateUsers
+      summary: Update user information
+      description: update user information by id
+      requestBody:
+        description: create new user
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/user_data_add_form"
+      responses:
+        200: 
+          description: Update user
+          content:
+            application/json:
+              schema:
+                  $ref: "#/components/schemas/user_data_form"
+    delete:
+      tags:
+        - Users
+      operationId: deleteUsersById
+      summary: Delete by id
+      description: Delete by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200: 
+          description: user deleted
+          content:
+            text/plain:
+              schema: 
+                type: string
+                example: ok
+
+components:
+  schemas:
+    user_data_form:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        company:
+          type: string
+    user_data_add_form: 
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        company:
+          type: string
