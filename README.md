@@ -9,7 +9,7 @@ This API contains CRUD request so you can get, add, update or delete data with r
 	open the folder rest_API_express_js in you terminal and type : 
 ```
 npm install
-node start index.js
+node index.js
 ```
 
 3- you can send you request in "localhost:9000/"
