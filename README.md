@@ -13,3 +13,7 @@ node start index.js
 ```
 
 3- you can send you request in "localhost:9000/"
+
+
+## Swagger documentation ## 
+You can find it in the file [api.yml](https://github.com/AmourRamanantsiresy/rest_API_express_js/blob/main/api.yml) 
